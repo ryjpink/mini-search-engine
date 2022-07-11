@@ -1,6 +1,7 @@
 from typing import List
 
-class TrieNode():
+
+class TrieNode:
     def __init__(self, end=False):
         self.end = end
         self.trie_dict = {}
@@ -57,13 +58,3 @@ if __name__ == "__main__":
         trie.add(word)
     prefix = input("query> ")
     print(trie.complete(prefix))
-
-
-
-
-
-
-
-
-
-

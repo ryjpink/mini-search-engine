@@ -3,6 +3,7 @@ from typing import List
 
 from document import Document
 
+
 class DocumentDB:
     def __init__(self, file_name='index.db'):
         self.c = sqlite3.connect(file_name)

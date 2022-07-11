@@ -6,6 +6,10 @@ from query import Query
 
 
 class SearchIndex:
+    """
+    Storage for documents and an inverted index allowing fast query evaluation.
+    """
+
     documents: Dict[DocId, Document]
     posting_lists: Dict[str, PostingList]
 
