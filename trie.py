@@ -12,42 +12,33 @@ class Trie:
         self.root_node = TrieNode()
 
     def add(self, word: str):
-        check_node = self.root_node
-        for i, c in enumerate(word):
-            if not c in check_node.trie_dict:
-                if i == len(word) - 1:
-                    new_node = TrieNode(True)
-                else:
-                    new_node = TrieNode()
-                check_node.trie_dict[c] = new_node
-                check_node = new_node
-            else:
-                if i == len(word) - 1:
-                    check_node.trie_dict[c].end = True
-                else:
-                    check_node = check_node.trie_dict[c]
-
+        cur_node = self.root_node
+        for c in word:
+            if c not in cur_node.trie_dict:
+                cur_node.trie_dict[c] = TrieNode()
+            cur_node = cur_node.trie_dict[c]
+        cur_node.end = True
 
     def complete(self, prefix: str) -> List[str]:
-        check_node = self.root_node
+        cur_node = self.root_node
         answer = []
-        self.path = []
+        path = []
         for c in prefix:
-            if c not in check_node.trie_dict:
+            if c not in cur_node.trie_dict:
                 return answer
             else:
-                self.path.append(c)
-                check_node = check_node.trie_dict[c]
+                path.append(c)
+                cur_node = cur_node.trie_dict[c]
 
         def backtrack(cur_node):
             if cur_node.end is True:
-                answer.append("".join(self.path))
+                answer.append("".join(path))
             for candidate in cur_node.trie_dict:
-                self.path.append(candidate)
+                path.append(candidate)
                 backtrack(cur_node.trie_dict[candidate])
-                self.path.pop()
+                path.pop()
 
-        backtrack(check_node)
+        backtrack(cur_node)
         return answer
 
 
