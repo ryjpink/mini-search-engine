@@ -1,3 +1,4 @@
+from itertools import islice
 from typing import Dict, List
 from collections import defaultdict
 from posting_list import PostingList, DocId
@@ -28,7 +29,8 @@ class SearchIndex:
             self.posting_lists[word].append(self.doc_id)
         self.doc_id += 1
 
-    def search(self, query: Query) -> List[Document]:
+    def search(self, query: Query, start: int = 0, limit: int = 100) -> List[Document]:
         doc_ids = query.execute(self.posting_lists)
-        docs = [self.documents[doc_id] for doc_id in doc_ids]
-        return docs
+        returned_docs_ids = islice(doc_ids, start, limit)
+        returned_docs = [self.documents[doc_id] for doc_id in returned_docs_ids]
+        return returned_docs
