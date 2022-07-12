@@ -38,7 +38,9 @@ def populate_test_data():
         Document("meatfloss bun", "flour meatfloss mayonnaise water egg"),
         Document("bacon stir fry cabbage", "bacon cabbage garlic"),
         Document("kimchi tofu stew", "tofu kimchi cabbage"),
-        Document("taro spread", "taro flour sugar water salt milk butter")
+        Document("taro spread", "taro flour sugar water salt milk butter"),
+        Document("french toast", "toast butter milk egg"),
+        Document("pancakes", "butter flour water sugar baking-soda egg"),
     ]
     for doc in recipes:
         db.add(doc)
