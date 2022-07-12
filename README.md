@@ -1,5 +1,7 @@
 # Mini Search Engine
 
+![CI status](https://github.com/ryjpink/mini-search-engine/actions/workflows/build-and-test.yml/badge.svg)
+
 Search a recipe collection with a query parser and evaluation engine allowing arbitrary boolean queries
 
 ## Installation
