@@ -18,7 +18,7 @@ class DocumentDB:
             INSERT OR FAIL INTO documents (dish_name, ingredients)
             VALUES (:dish_name, :ingredients)""",
             {
-                "dish_name": doc.dish,
+                "dish_name": doc.title,
                 "ingredients": doc.body
             })
         self.c.commit()
